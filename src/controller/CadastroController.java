@@ -47,7 +47,7 @@ public class CadastroController extends Application {
         gp.add(txtTel, 1,4);
         gp.add(lblSenha, 0,5);
         gp.add(txtSenha, 1,5);
-        gp.add(buttonsBox, 0, 13);
+        gp.add(buttonsBox, 0, 12);
 
         buttonsBox.getChildren().addAll(btnLogin);
 
@@ -68,13 +68,11 @@ public class CadastroController extends Application {
         btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stg.setTitle("Login Efetuado com Sucesso");
+            	stg.setTitle("Cadastro Efetuado com Sucesso");
             }
         });
         
     }
-    
-    
     
     public static void main(String[] args) {
 		Application.launch(CadastroController.class, args);
