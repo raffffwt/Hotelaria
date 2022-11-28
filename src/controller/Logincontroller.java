@@ -10,15 +10,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class Logincontroller extends Application {
     @Override
     public void start(Stage stg) throws Exception {
         GridPane gp = new GridPane();
-        HBox buttonsBox = new HBox();
-        Scene scn = new Scene(gp, 400, 150);
+        Scene scn = new Scene(gp, 600, 150);
 
         Button btnLogin = new Button("Fazer Login");
         Button btnPesquisa = new Button("Não tem Login?");
@@ -33,9 +31,10 @@ public class Logincontroller extends Application {
         gp.add(txtNome, 1,1);
         gp.add(lblTel, 0,2);
         gp.add(txtTel, 1,2);
-        gp.add(buttonsBox, 0, 4);
+        gp.add(btnLogin, 0, 3);
+        gp.add(btnPesquisa, 1, 3);
 
-        buttonsBox.getChildren().addAll(btnLogin, btnPesquisa);
+
 
         ColumnConstraints col1 = new ColumnConstraints();
         ColumnConstraints col2 = new ColumnConstraints();
@@ -46,7 +45,7 @@ public class Logincontroller extends Application {
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
 
-        stg.setResizable(false);
+        stg.setResizable(true);
         stg.setScene(scn);
         stg.setTitle("Login Hotelaria");
         stg.show();
