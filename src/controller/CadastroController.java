@@ -1,5 +1,7 @@
 package controller;
 
+import java.sql.SQLException;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -12,6 +14,7 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import repository.CadastroRepository;
 
 public class CadastroController extends Application {
 	@Override
@@ -68,7 +71,13 @@ public class CadastroController extends Application {
         btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stg.setTitle("Cadastro Efetuado com Sucesso");
+            	CadastroRepository cadastroController = new CadastroRepository();
+            	try {
+					cadastroController.CadastraUsuario(txtNome.getText() , txtEmail.getText(), txtEndereco.getText(), txtSenha.getText(), txtEndereco.getText());
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
             }
         });
         

@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -12,8 +14,18 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import model.Produto;
+import repository.CardapioRepository;
 
 public class CardapioController extends Application {
+	
+	public List<Produto> listaProduto;
+	
+	public CardapioController() {
+        CardapioRepository cardapioRepo = new CardapioRepository();
+        
+        listaProduto = cardapioRepo.findAllProdutos();
+	}
 	@Override
 	public void start(final Stage stag) throws Exception {
         GridPane gp = new GridPane();
@@ -23,29 +35,28 @@ public class CardapioController extends Application {
  //DECLARAÇÃO DAS LABELS E BOTÕES                                            
         Button btnFinalizar = new Button("Finalizar Compra");
         
-        
         Button btnLogin = new Button("Adicionar");
-        Label lblSkol = new Label("Skol Long Neck ");
-        Label lblSkoldesc = new Label("330ml ");
-        Label lblSkolprc = new Label("Valor: $$$ ");
-        
+        Label lblSkol = new Label(listaProduto.get(0).getNome());
+        Label lblSkoldesc = new Label(listaProduto.get(0).getDescricao());
+        Label lblSkolprc = new Label(listaProduto.get(0).getValor().toString());
+       
         
         Button btnCadastrar = new Button("Adicionar");
-        Label lblHei = new Label("Heineken Long Neck ");
-        Label lblHeidesc = new Label("330ml ");
-        Label lblHeiprc = new Label("Valor: $$$ ");
+        Label lblHei = new Label(listaProduto.get(1).getNome());
+        Label lblHeidesc = new Label(listaProduto.get(1).getDescricao());
+        Label lblHeiprc = new Label(listaProduto.get(1).getValor().toString());
         
         
         Button btnCadastrar2 = new Button("Adicionar");
-        Label lblCheet = new Label("Cheetos ");
-        Label lblCheetdesc = new Label("230g ");
-        Label lblCheetprc = new Label("R$: $$$ ");
+        Label lblCheet = new Label(listaProduto.get(2).getNome());
+        Label lblCheetdesc = new Label(listaProduto.get(2).getDescricao());
+        Label lblCheetprc = new Label(listaProduto.get(2).getValor().toString());
         
         
         Button btnCadastrar3 = new Button("Adicionar");
-        Label lblFandangos = new Label("Fandangos ");
-        Label lblFandangosdesc = new Label("280g ");
-        Label lblFandangosprc = new Label("Valor: $$$ ");
+        Label lblFandangos = new Label(listaProduto.get(3).nome);
+        Label lblFandangosdesc = new Label(listaProduto.get(3).descricao);
+        Label lblFandangosprc = new Label(listaProduto.get(3).valor.toString());
 
         
 
@@ -64,14 +75,14 @@ public class CardapioController extends Application {
         
         //LABELS E BOTÕES CHEETOS
         gp.add(lblCheet, 1,11);
-        gp.add(lblCheetdesc, 1,14);
         gp.add(lblCheetprc, 1,13);
+        gp.add(lblCheetdesc, 1,14);
         gp.add(btnCadastrar2,  1, 16);
         
         //LABELS E BOTÕES FANDANGOS
-        gp.add(lblFandangos, 2,11);
-        gp.add(lblFandangosdesc, 2,14);                   
+        gp.add(lblFandangos, 2,11);                
         gp.add(lblFandangosprc, 2,13);
+        gp.add(lblFandangosdesc, 2,14);   
         gp.add(btnCadastrar3, 2, 16);
         
                        
