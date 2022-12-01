@@ -1,11 +1,13 @@
 package controller;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,11 +18,21 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import model.Quarto;
+import repository.QuartoRepository;
+import repository.ReservaRepository;
 
-public class ReservarController extends Application {
-	@Override
-	public void start(Stage stg) throws Exception {
-        GridPane gp = new GridPane();
+public class ReservarController {
+	Quarto currentQuarto = new Quarto();
+
+	public ReservarController(int quartoId) {
+		QuartoRepository quartoRepo = new QuartoRepository();
+		
+		currentQuarto = quartoRepo.findQuartoById(quartoId);
+	}
+	
+	public Scene render() throws FileNotFoundException {
+		GridPane gp = new GridPane();
         HBox buttonsBox = new HBox();
         Scene scn = new Scene(gp, 900, 400);
 
@@ -46,16 +58,16 @@ public class ReservarController extends Application {
         gp.add(lblNome, 1,1);
         gp.add(root, 1, 3);
         
-        Label lblSuite = new Label("Suite | Quarto numero 3");
+        Label lblSuite = new Label(currentQuarto.getTipo());
         gp.add(lblSuite, 1,5);
         
-        Label lblDescricao = new Label("Descricao: Quarto com duas camas e um banheiro");
+        Label lblDescricao = new Label(currentQuarto.descricao);
         gp.add(lblDescricao, 1,6);
         
         Label lblData = new Label("Data inicio: 15/10/22 | Data de entrega: 25/11/22");
         gp.add(lblData, 1,7);
         
-        Label lblValor = new Label("Valor: R$1500,00");
+        Label lblValor = new Label(currentQuarto.getValor().toString());
         gp.add(lblValor, 1,8);
         gp.add(buttonsBox, 0, 13);
        
@@ -69,22 +81,16 @@ public class ReservarController extends Application {
         gp.getColumnConstraints().addAll(col1, col2);
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
-
-        stg.setResizable(false);
-        stg.setScene(scn);
-        stg.setTitle("Hotelaria");
-        stg.show();
         
         btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stg.setTitle("Quarto Reservado");
+            	ReservaRepository reserva = new ReservaRepository();
+            	reserva.ReservarQuarto(currentQuarto.getId());
             }
         });
         
-    }
-    
-    public static void main(String[] args) {
-		Application.launch(ReservarController.class, args);
+		return scn;
+        
 	}
 }
