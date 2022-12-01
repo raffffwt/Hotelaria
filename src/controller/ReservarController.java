@@ -39,7 +39,7 @@ public class ReservarController {
         Button btnLogin = new Button("Reservar");
         
         Label lblNome = new Label("Hotel");
-        Image image = new Image(new FileInputStream("C:\\Users\\DESKTOP\\Desktop\\Area de trabalho\\Imagens foda\\Capturar.png"));  
+        Image image = new Image(new FileInputStream("C:\\Users\\DESKTOP\\Code\\Hotelaria\\src\\source\\carlospilotto3.jpg"));  
         
         ImageView imageView = new ImageView(image); 
         
@@ -64,12 +64,12 @@ public class ReservarController {
         Label lblDescricao = new Label(currentQuarto.descricao);
         gp.add(lblDescricao, 1,6);
         
-        Label lblData = new Label("Data inicio: 15/10/22 | Data de entrega: 25/11/22");
+        Label lblData = new Label("Data inicio: 8/10/22 | Data de entrega: 25/10/22");
         gp.add(lblData, 1,7);
         
-        Label lblValor = new Label(currentQuarto.getValor().toString());
+        Label lblValor = new Label("Valor: R$" + currentQuarto.getValor().toString().replace('.', ',') + "0");
         gp.add(lblValor, 1,8);
-        gp.add(buttonsBox, 0, 13);
+        gp.add(buttonsBox, 0, 11);
        
         buttonsBox.getChildren().addAll(btnLogin);
 

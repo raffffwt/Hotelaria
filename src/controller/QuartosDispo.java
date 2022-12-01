@@ -10,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -20,7 +19,6 @@ import repository.QuartoRepository;
 
 public class QuartosDispo extends Application {
 	public List<Quarto> listaQuartos;
-	private BorderPane bp;
 	
 	public QuartosDispo() {
         QuartoRepository quartoRepo = new QuartoRepository();
@@ -29,7 +27,6 @@ public class QuartosDispo extends Application {
 	}
 	@Override
 	public void start(final Stage stag) throws Exception {
-		bp = new BorderPane();
         GridPane gp = new GridPane();
         HBox buttonsBox = new HBox();
         Scene scn = new Scene(gp, 900, 400);
@@ -39,29 +36,29 @@ public class QuartosDispo extends Application {
         Button btnCadastrar = new Button("Reservar");
         Label lblSuite1 = new Label(listaQuartos.get(0).getTipo());
         Label lblSuitedesc1 = new Label(listaQuartos.get(0).getDescricao());
-        Label lblSuiteprc1 = new Label(listaQuartos.get(0).getValor().toString());
-        Label lblOcupado1 = new Label(listaQuartos.get(0).isReservado ? "Sim" : "Nao");
+        Label lblSuiteprc1 = new Label("Valor: R$" + listaQuartos.get(0).getValor().toString().replace('.', ',') + "0");
+        Label lblOcupado1 = new Label("Ocupado: " + (listaQuartos.get(0).isReservado ? "Sim" : "Nao"));
        
         
         Button btnCadastrar2 = new Button("Reservar");
         Label lblSuite2 = new Label(listaQuartos.get(1).getTipo());
         Label lblSuitedesc2 = new Label(listaQuartos.get(1).getDescricao());
-        Label lblSuiteprc2 = new Label(listaQuartos.get(1).getValor().toString());
-        Label lblOcupado2 = new Label(listaQuartos.get(1).isReservado ? "Sim" : "Nao");
+        Label lblSuiteprc2 = new Label("Valor: R$" + listaQuartos.get(1).getValor().toString().replace('.', ',') + "0");
+        Label lblOcupado2 = new Label("Ocupado: " + (listaQuartos.get(1).isReservado ? "Sim" : "Nao"));
         
         
         Button btnCadastrar3 = new Button("Reservar");
         Label lblSuite3 = new Label(listaQuartos.get(2).getTipo());
         Label lblSuitedesc3 = new Label(listaQuartos.get(2).getDescricao());
-        Label lblSuiteprc3 = new Label(listaQuartos.get(2).getValor().toString());
-        Label lblOcupado3 = new Label(listaQuartos.get(2).isReservado ? "Sim" : "Nao");
+        Label lblSuiteprc3 = new Label("Valor: R$" + listaQuartos.get(2).getValor().toString().replace('.', ',') + "0");
+        Label lblOcupado3 = new Label("Ocupado: " + (listaQuartos.get(2).isReservado ? "Sim" : "Nao"));
         
         
         Button btnCadastrar4 = new Button("Reservar");
         Label lblSuite4 = new Label(listaQuartos.get(3).getTipo());
         Label lblSuitedesc4 = new Label(listaQuartos.get(3).descricao);
-        Label lblSuiteprc4 = new Label(listaQuartos.get(3).valor.toString());
-        Label lblOcupado4 = new Label(listaQuartos.get(3).isReservado ? "Sim" : "Nao");
+        Label lblSuiteprc4 = new Label("Valor: R$" + listaQuartos.get(3).getValor().toString().replace('.', ',') + "0");
+        Label lblOcupado4 = new Label("Ocupado: " + (listaQuartos.get(3).isReservado ? "Sim" : "Nao"));
 
         
 
@@ -113,7 +110,6 @@ public class QuartosDispo extends Application {
             	try {
 					stag.setScene(reservarController.render());
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
             }
@@ -127,7 +123,6 @@ public class QuartosDispo extends Application {
             	try {
 					stag.setScene(reservarController.render());
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
             }
@@ -141,11 +136,11 @@ public class QuartosDispo extends Application {
             	try {
 					stag.setScene(reservarController.render());
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
             }
         });
+        
         btnCadastrar4.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -154,7 +149,6 @@ public class QuartosDispo extends Application {
             	try {
 					stag.setScene(reservarController.render());
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
             }

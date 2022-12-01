@@ -37,10 +37,10 @@ public class CardapioRepository {
     }
 	
 	private Produto getProdutoFromResultSet(ResultSet rs) throws SQLException {
-		Produto pers = new Produto();
-		pers.setNome(rs.getString(2));	
-        pers.setDescricao(rs.getString(3));
-        pers.setValor(rs.getDouble(4));
-        return pers;
+		Produto produto = new Produto();
+		produto.setNome(rs.getString(2));	
+		produto.setDescricao(rs.getString(3));
+		produto.setValor(rs.getDouble(4));
+        return produto;
     }
 }
