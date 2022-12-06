@@ -17,12 +17,10 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class HomePageController extends Application {
-
 	@Override
 	public void start(Stage stg) throws Exception {
 
 		GridPane gp = new GridPane();
-		HBox buttonsBox = new HBox();
 		Scene scn = new Scene(gp, 920, 400); 	
 		
 		Label lblHotel = new Label ("        HOTELARIA");
@@ -36,29 +34,22 @@ public class HomePageController extends Application {
 		Label lblHome = new Label("Home //");
 		
 		Label lblServ = new Label("Nossos serviços oferecidos:  ");
-				
-				
-		
+
 		gp.add(lblCardapio, 0, 1);
 		gp.add(lblCadastro, 0, 1);
 		gp.add(lblHome, 0, 1);
 		gp.add(lblHotel, 0, 0);
 		gp.add(lblQuartos, 0, 1);
 		gp.add(lblServ, 10, 20);
-		
 
-   
-		
 	 	stg.setResizable(false);
         stg.setScene(scn);
         stg.setTitle("Página inical");
         stg.show();
 		
 	}
-	
-
 	 public static void main(String[] args) {
 			Application.launch(HomePageController.class, args);
-		}
+	}
 
 }

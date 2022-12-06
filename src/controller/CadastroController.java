@@ -16,9 +16,9 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import repository.CadastroRepository;
 
-public class CadastroController extends Application {
-	@Override
-	public void start(Stage stg) throws Exception {
+public class CadastroController {
+
+	public Scene render() throws Exception {
         GridPane gp = new GridPane();
         HBox buttonsBox = new HBox();
         Scene scn = new Scene(gp, 800, 300);
@@ -62,11 +62,6 @@ public class CadastroController extends Application {
         gp.getColumnConstraints().addAll(col1, col2);
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
-
-        stg.setResizable(false);
-        stg.setScene(scn);
-        stg.setTitle("Login Hotelaria");
-        stg.show();
         
         btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -79,10 +74,7 @@ public class CadastroController extends Application {
 				}
             }
         });
+		return scn;
         
     }
-    
-    public static void main(String[] args) {
-		Application.launch(CadastroController.class, args);
-	}
 }

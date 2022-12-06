@@ -19,9 +19,9 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 
-public class PerfilController extends Application {
-	@Override
-	public void start(final Stage stg) throws Exception {
+public class PerfilController {
+	
+	public Scene render() throws Exception {
         final GridPane gp = new GridPane();
         Scene scn = new Scene(gp, 900, 600);
 
@@ -81,15 +81,9 @@ public class PerfilController extends Application {
         gp.getColumnConstraints().addAll(col1, col2);
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
-
-        stg.setResizable(false);
-        stg.setScene(scn);
-        stg.setTitle("Meu Perfil");
-        stg.show();
         
         btnRedefinir.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
         public void handle(MouseEvent event) {
-        	stg.setTitle("Redefinição de Senha");
         	
         	Label lblSenhaNova = new Label("Senha Nova: ");
         	TextField txtSenhaNova = new TextField();
@@ -97,15 +91,8 @@ public class PerfilController extends Application {
             gp.add(lblSenhaNova, 0, 6);
             gp.add(txtSenhaNova, 1, 6);
                             	        	        	
-        } 
-    
-});
-        
-
-        
+        	}	   
+        });
+		return scn;   
     }
-    
-    public static void main(String[] args) {
-		Application.launch(PerfilController.class, args);
-	}
 }

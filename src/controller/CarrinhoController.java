@@ -17,10 +17,9 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 
-public class CarrinhoController extends Application {
+public class CarrinhoController {
 
-	@Override
-	public void start(Stage stg) throws Exception {
+	public Scene render() throws Exception {
 		GridPane gp = new GridPane();
 		HBox buttonsBox = new HBox();
 		Scene scn = new Scene(gp, 920, 400);
@@ -60,17 +59,11 @@ public class CarrinhoController extends Application {
         gp.getColumnConstraints().addAll(col1, col2);
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
-		
-	 	stg.setResizable(false);
-        stg.setScene(scn);
-        stg.setTitle("Carrinho Pagamento");
-        stg.show();
         
         
         rb1.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stg.setTitle("  Pagamento com boleto selecionado");
             	
             	
         	Button btnImpboleto = new Button("imprimir boleto");
@@ -80,15 +73,13 @@ public class CarrinhoController extends Application {
             	
             } //aparecer mensagem sobre a função de pagamento escolhida
         
-	});
+        });
         
         
         
         rb2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
-            public void handle(MouseEvent event) {
-            	stg.setTitle("  Função crédito selecionada");
-            	
+            public void handle(MouseEvent event) {     	
             	Label lblNumcard = new Label("Numero do cartão: ");
                 TextField txtNumcard = new TextField(); 
                 
@@ -97,32 +88,23 @@ public class CarrinhoController extends Application {
                 
                 Label lblData = new Label("Data de validade: ");
                 TextField txtData = new TextField();
-                
-                
+                   
                 gp.add(lblNumcard, 0, 20); 
                 gp.add(lblCvv, 0, 21);
-                gp.add(lblData, 0, 22);
-               
-            	
-            	
-            	
+                gp.add(lblData, 0, 22);	
             } //aparecer mensagem sobre a função de pagamento escolhida
         
-	});
+        });
         
         
         
         btnPagar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stg.setTitle(" Pagamento realizado");
-            } //mensagem de pagamento realizado ao clicar
-           
-        
-	});
-	}
 
-	 public static void main(String[] args) {
-			Application.launch(CarrinhoController.class, args);
-		}
+            }
+        });
+        
+		return scn;
+	}
 }

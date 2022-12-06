@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import model.Produto;
 import repository.CardapioRepository;
 
-public class CardapioController extends Application {
+public class CardapioController {
 	
 	public List<Produto> listaProduto;
 	
@@ -26,8 +26,8 @@ public class CardapioController extends Application {
         
         listaProduto = cardapioRepo.findAllProdutos();
 	}
-	@Override
-	public void start(final Stage stag) throws Exception {
+
+	public Scene render() throws Exception {
         GridPane gp = new GridPane();
         HBox buttonsBox = new HBox();
         Scene scn = new Scene(gp, 900, 400);
@@ -99,48 +99,37 @@ public class CardapioController extends Application {
         gp.getColumnConstraints().addAll(col1, col2);
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
-
-        stag.setResizable(false);
-        stag.setScene(scn);
-        stag.setTitle("Login Hotelaria");
-        stag.show();
         
         btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stag.setTitle(" Adicionado ao Carrinho");
+            	
             }
         });
         btnCadastrar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stag.setTitle(" Adicionado ao Carrinho");
+            	
             }
         });
         btnCadastrar2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stag.setTitle(" Adicionado ao Carrinho");
+            	
             }
         });
         btnCadastrar3.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stag.setTitle(" Adicionado ao Carrinho");
+            	
             }
         });
         btnFinalizar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stag.setTitle(" Compra Finalizada");
+            	
             }
         });
+		return scn;
     }
-	
-    
-    
-    
-    public static void main(String[] args) {
-		Application.launch(CardapioController.class, args);
-	}
 }

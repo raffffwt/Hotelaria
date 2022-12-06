@@ -12,9 +12,9 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class Logincontroller extends Application {
-    @Override
-    public void start(Stage stg) throws Exception {
+public class Logincontroller {
+    
+    public Scene render() throws Exception {
         GridPane gp = new GridPane();
         Scene scn = new Scene(gp, 600, 150);
 
@@ -42,31 +42,19 @@ public class Logincontroller extends Application {
         gp.getColumnConstraints().addAll(col1, col2);
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
-
-        stg.setResizable(true);
-        stg.setScene(scn);
-        stg.setTitle("Login Hotelaria");
-        stg.show();
         
         btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stg.setTitle("Login Efetuado com Sucesso");
             }
         });
         
         btnPesquisa.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stg.setTitle("Cadastro");
             }
         });
         
+		return scn;
     }
-    
-    
-    
-    public static void main(String[] args) {
-		Application.launch(Logincontroller.class, args);
-	}
 }

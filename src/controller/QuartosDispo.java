@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import model.Quarto;
 import repository.QuartoRepository;
 
-public class QuartosDispo extends Application {
+public class QuartosDispo {
 	public List<Quarto> listaQuartos;
 	
 	public QuartosDispo() {
@@ -25,8 +25,8 @@ public class QuartosDispo extends Application {
         
         listaQuartos = quartoRepo.findAllQuartos();
 	}
-	@Override
-	public void start(final Stage stag) throws Exception {
+	
+	public Scene render(Stage stag) throws Exception {
         GridPane gp = new GridPane();
         HBox buttonsBox = new HBox();
         Scene scn = new Scene(gp, 900, 400);
@@ -161,15 +161,7 @@ public class QuartosDispo extends Application {
         btnCadastrar.setDisable(listaQuartos.get(0).isReservado ? true : false);
         btnCadastrar2.setDisable(listaQuartos.get(1).isReservado ? true : false);
         btnCadastrar3.setDisable(listaQuartos.get(2).isReservado ? true : false);
-        btnCadastrar4.setDisable(listaQuartos.get(3).isReservado ? true : false);        
-
-        stag.setResizable(false);
-        stag.setScene(scn);
-        stag.setTitle("Quartos Hotelaria");
-        stag.show();
+        btnCadastrar4.setDisable(listaQuartos.get(3).isReservado ? true : false);
+		return scn;        
     }
-	
-    public static void main(String[] args) {
-		Application.launch(QuartosDispo.class, args);
-	}
 }
