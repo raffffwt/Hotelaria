@@ -17,12 +17,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import repository.CadastroRepository;
+
 
 public class PerfilController extends Application {
 	@Override
-	public void start(Stage stg) throws Exception {
-        GridPane gp = new GridPane();
+	public void start(final Stage stg) throws Exception {
+        final GridPane gp = new GridPane();
         Scene scn = new Scene(gp, 900, 600);
 
         Button btnLogin = new Button("Aplicar");
@@ -39,10 +39,7 @@ public class PerfilController extends Application {
         
         Label lblSenha = new Label("Senha: ");
         TextField txtSenha = new TextField();
-        
-        Label lblSenhaNova = new Label("Senha Nova: ");
-        TextField txtSenhaNova = new TextField();
-        
+                      
         Image image = new Image(new FileInputStream("C:\\Users\\yan\\Desktop\\17004.png"));  
         
         ImageView imageView = new ImageView(image); 
@@ -71,8 +68,6 @@ public class PerfilController extends Application {
         gp.add(lblSenha, 0,5);
         gp.add(txtSenha, 1,5);      
                
-        gp.add(lblSenhaNova, 0, 6);
-        gp.add(txtSenhaNova, 1, 6);
         gp.add(btnRedefinir, 1, 7);
         
         gp.add(btnLogin, 0, 12);
@@ -89,8 +84,22 @@ public class PerfilController extends Application {
 
         stg.setResizable(false);
         stg.setScene(scn);
-        stg.setTitle("Login Hotelaria");
+        stg.setTitle("Meu Perfil");
         stg.show();
+        
+        btnRedefinir.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        public void handle(MouseEvent event) {
+        	stg.setTitle("Redefinição de Senha");
+        	
+        	Label lblSenhaNova = new Label("Senha Nova: ");
+        	TextField txtSenhaNova = new TextField();
+            
+            gp.add(lblSenhaNova, 0, 6);
+            gp.add(txtSenhaNova, 1, 6);
+                            	        	        	
+        } 
+    
+});
         
 
         
