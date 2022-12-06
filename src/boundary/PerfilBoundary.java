@@ -30,6 +30,7 @@ public class PerfilBoundary {
         Button btnLogin = new Button("Aplicar");
         
         Button btnRedefinir = new Button("Redefinir Senha");
+        Button btnExcluirConta = new Button("Excluir conta");
         
         Label lblNome = new Label("Nome: " + currentUser.getNome());
 
@@ -75,6 +76,7 @@ public class PerfilBoundary {
         gp.add(btnRedefinir, 1, 7);
         
         gp.add(btnLogin, 0, 12);
+        gp.add(btnExcluirConta, 12, 12);
 
 
         ColumnConstraints col1 = new ColumnConstraints();
@@ -109,6 +111,14 @@ public class PerfilBoundary {
 	        		menuPrincipal.setScene(cenaPrincipal);
 	        		menuPrincipal.show();
 	        	}
+	        }	   
+        });
+        
+        btnExcluirConta.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+	        public void handle(MouseEvent event) {
+	        	UsuarioControl userControl = new UsuarioControl();
+	        	
+	        	userControl.ExcluirUsuario(currentUser.getId());
 	        }	   
         });
         

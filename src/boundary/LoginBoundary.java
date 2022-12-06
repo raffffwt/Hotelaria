@@ -53,15 +53,15 @@ public class LoginBoundary {
             public void handle(MouseEvent event) {
             	UsuarioControl login = new UsuarioControl();
             	Usuario refUser = login.findUsuarioByNome(txtNome.getText());
-            	if(refUser.getSenha().equals(txtSenha.getText())) {
+            	if(refUser.getSenha() == null || !refUser.getSenha().equals(txtSenha.getText())) {
+            		lblAviso.setVisible(true);
+            	} else {
             		menuPrincipal.close();
             		menuPrincipal.setScene(cenaPrincipal);
             		homePage.setIsLogado(true);
             		homePage.currentUser = login.findUsuarioById(refUser.getId());    	
             		
             		menuPrincipal.show();
-            	} else {
-            		lblAviso.setVisible(true);
             	}
             }
         });

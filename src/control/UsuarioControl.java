@@ -65,6 +65,24 @@ public class UsuarioControl {
         return true;
 	}
 	
+	public Boolean ExcluirUsuario(int id) {
+		PreparedStatement ps = null;
+        ResultSet rs = null;
+        Connection con = DbConfig.getConnection();
+        
+        try {
+        	ps = con.prepareStatement("DELETE FROM USUARIO WHERE ID = ?");
+        	ps.setInt(1, id);
+        	ps.executeUpdate();
+        } catch (SQLException e) {
+        	return false;
+        } finally {
+        	closeResources(ps, rs);
+        }
+        
+        return true;
+	}
+	
 	private void closeResources(PreparedStatement ps, ResultSet rs) {
         DbConfig.closeResultSet(rs);
         DbConfig.closeStatement(ps);

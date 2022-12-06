@@ -68,7 +68,7 @@ public class CadastroBoundary {
             public void handle(MouseEvent event) {
             	CadastroControl cadastroController = new CadastroControl();
             	try {
-					cadastroController.CadastraUsuario(txtNome.getText() , txtEmail.getText(), txtEndereco.getText(), txtSenha.getText(), txtEndereco.getText());
+					cadastroController.CadastraUsuario(txtNome.getText() , txtEmail.getText(), txtEndereco.getText(), txtSenha.getText(), txtTel.getText());
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
