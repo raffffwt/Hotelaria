@@ -1,4 +1,4 @@
-package controller;
+package boundary;
 
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -17,10 +17,9 @@ import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 
-public class CarrinhoController extends Application {
+public class CarrinhoBoundary {
 
-	@Override
-	public void start(Stage stg) throws Exception {
+	public Scene render(Stage stg) throws Exception {
 		GridPane gp = new GridPane();
 		HBox buttonsBox = new HBox();
 		Scene scn = new Scene(gp, 920, 400);
@@ -123,9 +122,7 @@ public class CarrinhoController extends Application {
            
         
 	});
+		return scn;
 	}
 
-	 public static void main(String[] args) {
-			Application.launch(CarrinhoController.class, args);
-		}
 }
