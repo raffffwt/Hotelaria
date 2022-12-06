@@ -31,12 +31,12 @@ public class ReservarController {
 		currentQuarto = quartoRepo.findQuartoById(quartoId);
 	}
 	
-	public Scene render() throws FileNotFoundException {
+	public Scene render(Stage stagePrincipal, Scene cenaPrincipal) throws FileNotFoundException {
 		GridPane gp = new GridPane();
         HBox buttonsBox = new HBox();
         Scene scn = new Scene(gp, 900, 400);
 
-        Button btnLogin = new Button("Reservar");
+        Button btnReservar = new Button("Reservar");
         
         Label lblNome = new Label("Hotel");
         Image image = new Image(new FileInputStream("C:\\Users\\DESKTOP\\Code\\Hotelaria\\src\\source\\carlospilotto3.jpg"));  
@@ -71,7 +71,7 @@ public class ReservarController {
         gp.add(lblValor, 1,8);
         gp.add(buttonsBox, 0, 11);
        
-        buttonsBox.getChildren().addAll(btnLogin);
+        buttonsBox.getChildren().addAll(btnReservar);
 
         ColumnConstraints col1 = new ColumnConstraints();
         ColumnConstraints col2 = new ColumnConstraints();
@@ -82,11 +82,15 @@ public class ReservarController {
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
         
-        btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        btnReservar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
             	ReservaRepository reserva = new ReservaRepository();
             	reserva.ReservarQuarto(currentQuarto.getId());
+            	stagePrincipal.close();
+            	stagePrincipal.setScene(cenaPrincipal);
+            	
+            	stagePrincipal.show();
             }
         });
         

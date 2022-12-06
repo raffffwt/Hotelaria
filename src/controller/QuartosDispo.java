@@ -105,10 +105,11 @@ public class QuartosDispo extends Application {
         btnCadastrar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarController reservarController = new ReservarController(listaQuartos.get(0).id);
-            	
+            	ReservarController reservarController = new ReservarController(listaQuartos.get(0).getId());
+            	lblOcupado1.setText("Ocupado: Sim");
+            	btnCadastrar.setDisable(true);
             	try {
-					stag.setScene(reservarController.render());
+					stag.setScene(reservarController.render(stag, scn));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -118,10 +119,11 @@ public class QuartosDispo extends Application {
         btnCadastrar2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarController reservarController = new ReservarController(listaQuartos.get(1).id);
-            	
+            	ReservarController reservarController = new ReservarController(listaQuartos.get(1).getId());
+            	btnCadastrar2.setDisable(true);
+            	lblOcupado2.setText("Ocupado: Sim");
             	try {
-					stag.setScene(reservarController.render());
+					stag.setScene(reservarController.render(stag, scn));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -131,10 +133,11 @@ public class QuartosDispo extends Application {
         btnCadastrar3.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarController reservarController = new ReservarController(listaQuartos.get(2).id);
-            	
+            	ReservarController reservarController = new ReservarController(listaQuartos.get(2).getId());
+            	btnCadastrar3.setDisable(true);
+            	lblOcupado3.setText("Ocupado: Sim");
             	try {
-					stag.setScene(reservarController.render());
+					stag.setScene(reservarController.render(stag, scn));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -144,10 +147,11 @@ public class QuartosDispo extends Application {
         btnCadastrar4.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarController reservarController = new ReservarController(listaQuartos.get(3).id);
-            	
+            	ReservarController reservarController = new ReservarController(listaQuartos.get(3).getId());
+            	btnCadastrar4.setDisable(true);
+            	lblOcupado4.setText("Ocupado: Sim");
             	try {
-					stag.setScene(reservarController.render());
+					stag.setScene(reservarController.render(stag, scn));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}

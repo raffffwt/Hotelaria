@@ -34,8 +34,6 @@ public class Logincontroller extends Application {
         gp.add(btnLogin, 0, 3);
         gp.add(btnPesquisa, 1, 3);
 
-
-
         ColumnConstraints col1 = new ColumnConstraints();
         ColumnConstraints col2 = new ColumnConstraints();
         col1.setPercentWidth(15);
