@@ -1,4 +1,4 @@
-package repository;
+package control;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,9 +11,9 @@ import config.DbConfig;
 import model.Produto;
 import model.Quarto;
 
-public class QuartoRepository {
+public class QuartoControl {
 	private Connection con;
-	public QuartoRepository() {
+	public QuartoControl() {
 		con = DbConfig.getConnection();
 	}
 	public List<Quarto> findAllQuartos() {

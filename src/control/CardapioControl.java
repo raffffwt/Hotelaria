@@ -1,4 +1,4 @@
-package repository;
+package control;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,7 +10,7 @@ import java.util.List;
 import config.DbConfig;
 import model.Produto;
 
-public class CardapioRepository {
+public class CardapioControl {
 	public List<Produto> findAllProdutos() {
 		PreparedStatement ps = null;
         ResultSet rs = null;

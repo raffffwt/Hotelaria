@@ -1,7 +1,8 @@
-package controller;
+package boundary;
 
 import java.util.List;
 
+import control.CardapioControl;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -15,14 +16,13 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.Produto;
-import repository.CardapioRepository;
 
-public class CardapioController {
+public class CardapioBoundary {
 	
 	public List<Produto> listaProduto;
 	
-	public CardapioController() {
-        CardapioRepository cardapioRepo = new CardapioRepository();
+	public CardapioBoundary() {
+        CardapioControl cardapioRepo = new CardapioControl();
         
         listaProduto = cardapioRepo.findAllProdutos();
 	}

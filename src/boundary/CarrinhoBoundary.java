@@ -1,11 +1,9 @@
-package controller;
+package boundary;
 
-import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -13,15 +11,12 @@ import javafx.scene.control.ToggleGroup;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
 
-public class CarrinhoController {
+public class CarrinhoBoundary {
 
 	public Scene render() throws Exception {
 		GridPane gp = new GridPane();
-		HBox buttonsBox = new HBox();
 		Scene scn = new Scene(gp, 920, 400);
 		
 		//declarar labels e botão

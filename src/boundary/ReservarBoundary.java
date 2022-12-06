@@ -1,8 +1,10 @@
-package controller;
+package boundary;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import control.QuartoControl;
+import control.ReservaControl;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -19,14 +21,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.Quarto;
-import repository.QuartoRepository;
-import repository.ReservaRepository;
 
-public class ReservarController {
+public class ReservarBoundary {
 	Quarto currentQuarto = new Quarto();
 
-	public ReservarController(int quartoId) {
-		QuartoRepository quartoRepo = new QuartoRepository();
+	public ReservarBoundary(int quartoId) {
+		QuartoControl quartoRepo = new QuartoControl();
 		
 		currentQuarto = quartoRepo.findQuartoById(quartoId);
 	}
@@ -49,10 +49,8 @@ public class ReservarController {
         imageView.setFitHeight(300); 
         imageView.setFitWidth(150); 
         
-        //Setting the preserve ratio of the image view 
         imageView.setPreserveRatio(true);  
-        
-        //Creating a Group object  
+
         Group root = new Group(imageView);  
         
         gp.add(lblNome, 1,1);
@@ -85,7 +83,7 @@ public class ReservarController {
         btnReservar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservaRepository reserva = new ReservaRepository();
+            	ReservaControl reserva = new ReservaControl();
             	reserva.ReservarQuarto(currentQuarto.getId());
             	stagePrincipal.close();
             	stagePrincipal.setScene(cenaPrincipal);

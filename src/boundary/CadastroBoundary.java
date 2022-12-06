@@ -1,7 +1,8 @@
-package controller;
+package boundary;
 
 import java.sql.SQLException;
 
+import control.CadastroControl;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -14,11 +15,10 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import repository.CadastroRepository;
 
-public class CadastroController {
+public class CadastroBoundary {
 
-	public Scene render() throws Exception {
+	public Scene render(Stage menuPrincipal, Scene cenaPrincipal) throws Exception {
         GridPane gp = new GridPane();
         HBox buttonsBox = new HBox();
         Scene scn = new Scene(gp, 800, 300);
@@ -66,12 +66,15 @@ public class CadastroController {
         btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	CadastroRepository cadastroController = new CadastroRepository();
+            	CadastroControl cadastroController = new CadastroControl();
             	try {
 					cadastroController.CadastraUsuario(txtNome.getText() , txtEmail.getText(), txtEndereco.getText(), txtSenha.getText(), txtEndereco.getText());
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+            	menuPrincipal.close();
+            	menuPrincipal.setScene(cenaPrincipal);
+            	menuPrincipal.show();
             }
         });
 		return scn;

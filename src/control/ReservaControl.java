@@ -1,4 +1,4 @@
-package repository;
+package control;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import config.DbConfig;
 
-public class ReservaRepository {
+public class ReservaControl {
 	public Boolean ReservarQuarto(int id) {
 		PreparedStatement ps = null;
         ResultSet rs = null;

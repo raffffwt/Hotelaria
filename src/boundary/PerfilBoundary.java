@@ -1,8 +1,9 @@
-package controller;
+package boundary;
 
 
 import java.io.FileInputStream;
 
+import control.UsuarioControl;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,11 +18,12 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import model.Usuario;
 
 
-public class PerfilController {
+public class PerfilBoundary {
 	
-	public Scene render() throws Exception {
+	public Scene render(Usuario currentUser, Stage menuPrincipal, Scene cenaPrincipal, HomePageBoundary homePage) throws Exception {
         final GridPane gp = new GridPane();
         Scene scn = new Scene(gp, 900, 600);
 
@@ -29,18 +31,20 @@ public class PerfilController {
         
         Button btnRedefinir = new Button("Redefinir Senha");
         
-        Label lblNome = new Label("Nome: ");
+        Label lblNome = new Label("Nome: " + currentUser.getNome());
 
-        Label lblEmail = new Label("Email: ");
+        Label lblEmail = new Label("Email: " + currentUser.getEmail());
         
-        Label lblEndereco = new Label("Endereco: ");
+        Label lblEndereco = new Label("Endereco: " + currentUser.getEndereco());
 
-        Label lblTel = new Label("Telefone: ");
+        Label lblTel = new Label("Telefone: " + currentUser.getTelefone());
         
         Label lblSenha = new Label("Senha: ");
         TextField txtSenha = new TextField();
+        Label lblSenhaNova = new Label("Senha Nova: ");
+    	TextField txtSenhaNova = new TextField();
                       
-        Image image = new Image(new FileInputStream("C:\\Users\\yan\\Desktop\\17004.png"));  
+        Image image = new Image(new FileInputStream("C:\\Users\\DESKTOP\\Code\\Hotelaria\\src\\source\\17004.png"));  
         
         ImageView imageView = new ImageView(image); 
         
@@ -83,16 +87,31 @@ public class PerfilController {
         gp.setPadding(new Insets(15));
         
         btnRedefinir.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-        public void handle(MouseEvent event) {
-        	
-        	Label lblSenhaNova = new Label("Senha Nova: ");
-        	TextField txtSenhaNova = new TextField();
-            
-            gp.add(lblSenhaNova, 0, 6);
-            gp.add(txtSenhaNova, 1, 6);
-                            	        	        	
-        	}	   
+	        public void handle(MouseEvent event) {
+	        	if(txtSenha.getText().equals(currentUser.getSenha())) {
+	            	btnRedefinir.setVisible(false);
+	                
+	                gp.add(lblSenhaNova, 0, 6);
+	                gp.add(txtSenhaNova, 1, 6);
+	                return;
+	        	}        	
+	        }	   
         });
+        
+        btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+	        public void handle(MouseEvent event) {
+	        	if (!btnRedefinir.isVisible()) {
+	        		UsuarioControl userControl = new UsuarioControl();
+	        		userControl.AlterarSenha(currentUser.getId(), txtSenhaNova.getText());
+	        		homePage.currentUser =  userControl.findUsuarioById(currentUser.getId());
+	        		
+	        		menuPrincipal.close();
+	        		menuPrincipal.setScene(cenaPrincipal);
+	        		menuPrincipal.show();
+	        	}
+	        }	   
+        });
+        
 		return scn;   
     }
 }

@@ -1,4 +1,4 @@
-package repository;
+package control;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 import config.DbConfig;
 
-public class CadastroRepository {
+public class CadastroControl {
 	public Boolean CadastraUsuario(String nome, String email, String endereco, String senha, String telefone) throws SQLException {
 		PreparedStatement ps = null;
 		Connection con = DbConfig.getConnection();

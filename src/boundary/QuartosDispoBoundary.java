@@ -1,8 +1,9 @@
-package controller;
+package boundary;
 
 import java.io.FileNotFoundException;
 import java.util.List;
 
+import control.QuartoControl;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -15,13 +16,12 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.Quarto;
-import repository.QuartoRepository;
 
-public class QuartosDispo {
+public class QuartosDispoBoundary {
 	public List<Quarto> listaQuartos;
 	
-	public QuartosDispo() {
-        QuartoRepository quartoRepo = new QuartoRepository();
+	public QuartosDispoBoundary() {
+        QuartoControl quartoRepo = new QuartoControl();
         
         listaQuartos = quartoRepo.findAllQuartos();
 	}
@@ -105,7 +105,7 @@ public class QuartosDispo {
         btnCadastrar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarController reservarController = new ReservarController(listaQuartos.get(0).getId());
+            	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(0).getId());
             	lblOcupado1.setText("Ocupado: Sim");
             	btnCadastrar.setDisable(true);
             	try {
@@ -119,7 +119,7 @@ public class QuartosDispo {
         btnCadastrar2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarController reservarController = new ReservarController(listaQuartos.get(1).getId());
+            	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(1).getId());
             	btnCadastrar2.setDisable(true);
             	lblOcupado2.setText("Ocupado: Sim");
             	try {
@@ -133,7 +133,7 @@ public class QuartosDispo {
         btnCadastrar3.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarController reservarController = new ReservarController(listaQuartos.get(2).getId());
+            	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(2).getId());
             	btnCadastrar3.setDisable(true);
             	lblOcupado3.setText("Ocupado: Sim");
             	try {
@@ -147,7 +147,7 @@ public class QuartosDispo {
         btnCadastrar4.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarController reservarController = new ReservarController(listaQuartos.get(3).getId());
+            	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(3).getId());
             	btnCadastrar4.setDisable(true);
             	lblOcupado4.setText("Ocupado: Sim");
             	try {
@@ -158,10 +158,10 @@ public class QuartosDispo {
             }
         });
         
-        btnCadastrar.setDisable(listaQuartos.get(0).isReservado ? true : false);
-        btnCadastrar2.setDisable(listaQuartos.get(1).isReservado ? true : false);
-        btnCadastrar3.setDisable(listaQuartos.get(2).isReservado ? true : false);
-        btnCadastrar4.setDisable(listaQuartos.get(3).isReservado ? true : false);
+        btnCadastrar.setDisable(listaQuartos.get(0).isReservado);
+        btnCadastrar2.setDisable(listaQuartos.get(1).isReservado);
+        btnCadastrar3.setDisable(listaQuartos.get(2).isReservado);
+        btnCadastrar4.setDisable(listaQuartos.get(3).isReservado);
 		return scn;        
     }
 }
