@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import config.DbConfig;
-import model.Produto;
+import entity.Produto;
 
 public class CardapioControl {
 	public List<Produto> findAllProdutos() {

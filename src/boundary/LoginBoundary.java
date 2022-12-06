@@ -1,6 +1,7 @@
 package boundary;
 
 import control.UsuarioControl;
+import entity.Usuario;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -11,7 +12,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import model.Usuario;
 
 public class LoginBoundary {
     

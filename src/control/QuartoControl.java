@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import config.DbConfig;
-import model.Produto;
-import model.Quarto;
+import entity.Produto;
+import entity.Quarto;
 
 public class QuartoControl {
 	private Connection con;

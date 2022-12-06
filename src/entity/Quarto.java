@@ -1,4 +1,4 @@
-package model;
+package entity;
 
 public class Quarto {
 	public int id;

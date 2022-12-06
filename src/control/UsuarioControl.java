@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import config.DbConfig;
-import model.Usuario;
+import entity.Usuario;
 
 public class UsuarioControl {
 	public Usuario findUsuarioByNome(String nome) {

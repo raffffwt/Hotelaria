@@ -1,25 +1,26 @@
 package boundary;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import control.CardapioControl;
-import javafx.application.Application;
+import entity.Produto;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import model.Produto;
 
 public class CardapioBoundary {
 	
 	public List<Produto> listaProduto;
+	public List<Produto> carrinho = new ArrayList<>();
 	
 	public CardapioBoundary() {
         CardapioControl cardapioRepo = new CardapioControl();
@@ -27,7 +28,7 @@ public class CardapioBoundary {
         listaProduto = cardapioRepo.findAllProdutos();
 	}
 
-	public Scene render() throws Exception {
+	public Scene render(Stage menuPrincipal, Scene cenaPrincipal) throws Exception {
         GridPane gp = new GridPane();
         HBox buttonsBox = new HBox();
         Scene scn = new Scene(gp, 900, 400);
@@ -35,25 +36,25 @@ public class CardapioBoundary {
  //DECLARAÇÃO DAS LABELS E BOTÕES                                            
         Button btnFinalizar = new Button("Finalizar Compra");
         
-        Button btnLogin = new Button("Adicionar");
+        Button btnProduto = new Button("Adicionar");
         Label lblSkol = new Label(listaProduto.get(0).getNome());
         Label lblSkoldesc = new Label(listaProduto.get(0).getDescricao());
         Label lblSkolprc = new Label(listaProduto.get(0).getValor().toString());
        
         
-        Button btnCadastrar = new Button("Adicionar");
+        Button btnProduto2 = new Button("Adicionar");
         Label lblHei = new Label(listaProduto.get(1).getNome());
         Label lblHeidesc = new Label(listaProduto.get(1).getDescricao());
         Label lblHeiprc = new Label(listaProduto.get(1).getValor().toString());
         
         
-        Button btnCadastrar2 = new Button("Adicionar");
+        Button btnProduto3 = new Button("Adicionar");
         Label lblCheet = new Label(listaProduto.get(2).getNome());
         Label lblCheetdesc = new Label(listaProduto.get(2).getDescricao());
         Label lblCheetprc = new Label(listaProduto.get(2).getValor().toString());
         
         
-        Button btnCadastrar3 = new Button("Adicionar");
+        Button btnProduto4 = new Button("Adicionar");
         Label lblFandangos = new Label(listaProduto.get(3).nome);
         Label lblFandangosdesc = new Label(listaProduto.get(3).descricao);
         Label lblFandangosprc = new Label(listaProduto.get(3).valor.toString());
@@ -71,24 +72,24 @@ public class CardapioBoundary {
         gp.add(lblHei,  1,1);
         gp.add(lblHeiprc,  1,4);
         gp.add(lblHeidesc,  1,3);
-        gp.add(btnCadastrar, 1, 6);
+        gp.add(btnProduto2, 1, 6);
         
         //LABELS E BOTÕES CHEETOS
         gp.add(lblCheet, 1,11);
         gp.add(lblCheetprc, 1,13);
         gp.add(lblCheetdesc, 1,14);
-        gp.add(btnCadastrar2,  1, 16);
+        gp.add(btnProduto3,  1, 16);
         
         //LABELS E BOTÕES FANDANGOS
         gp.add(lblFandangos, 2,11);                
         gp.add(lblFandangosprc, 2,13);
         gp.add(lblFandangosdesc, 2,14);   
-        gp.add(btnCadastrar3, 2, 16);
+        gp.add(btnProduto4, 2, 16);
         
                        
         gp.add(btnFinalizar, 6, 20);
 
-        buttonsBox.getChildren().addAll(btnLogin);
+        buttonsBox.getChildren().addAll(btnProduto);
 
         
         ColumnConstraints col1 = new ColumnConstraints();
@@ -100,34 +101,39 @@ public class CardapioBoundary {
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
         
-        btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        btnProduto.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	
+            	carrinho.add(listaProduto.get(0));
             }
         });
-        btnCadastrar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        btnProduto2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	
+            	carrinho.add(listaProduto.get(1));
             }
         });
-        btnCadastrar2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        btnProduto3.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	
+            	carrinho.add(listaProduto.get(2));
             }
         });
-        btnCadastrar3.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        btnProduto4.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	
+            	carrinho.add(listaProduto.get(3));
             }
         });
         btnFinalizar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	
+            	CarrinhoBoundary carrinhoBoundary = new CarrinhoBoundary(carrinho);
+            	try {
+					menuPrincipal.setScene(carrinhoBoundary.render());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
             }
         });
 		return scn;

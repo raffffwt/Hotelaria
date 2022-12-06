@@ -1,7 +1,9 @@
 package boundary;
 
+import java.io.File;
 import java.io.FileInputStream;
 
+import entity.Usuario;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
@@ -13,11 +15,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import model.Usuario;
 
 public class HomePageBoundary extends Application {
 	private Boolean isLogado = false;
 	public Usuario currentUser = new Usuario();
+	private String dir = System.getProperty("user.dir");
+	
 	public void setIsLogado(Boolean isLogado) {
 		this.isLogado = isLogado;
 	}
@@ -56,8 +59,8 @@ public class HomePageBoundary extends Application {
 		gp.add(lblAr,12, 20);
 		gp.add(lblCafe, 4, 22);
 		gp.add(lblAlmoco, 12, 22);
-		
-		Image image = new Image(new FileInputStream("C:\\\\Users\\\\DESKTOP\\\\Code\\\\Hotelaria\\\\src\\\\source\\\\carlospilotto3.jpg"));  
+
+		Image image = new Image(new FileInputStream(new File(dir + "/resources/carlospilotto3.jpg")));  
         
         ImageView imageView = new ImageView(image); 
         
@@ -73,7 +76,7 @@ public class HomePageBoundary extends Application {
             
         gp.add(root, 25, 50);
 
- 		Image image2 = new Image(new FileInputStream("C:\\\\Users\\\\DESKTOP\\\\Code\\\\Hotelaria\\\\src\\\\source\\\\carlospilotto3.jpg"));  
+ 		Image image2 = new Image(new FileInputStream(new File(dir + "/resources/carlospilotto3.jpg")));  
         
         ImageView imageView2 = new ImageView(image2); 
         
@@ -94,7 +97,7 @@ public class HomePageBoundary extends Application {
             public void handle(MouseEvent event) {
             	CardapioBoundary cardapio = new CardapioBoundary();
             	try {
-					stg.setScene(cardapio.render());
+					stg.setScene(cardapio.render(stg, scn));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

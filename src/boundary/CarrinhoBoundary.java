@@ -1,37 +1,75 @@
 package boundary;
 
-import javafx.application.Application;
+import java.util.List;
+
+import entity.Produto;
+import javafx.collections.FXCollections;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 
 
 public class CarrinhoBoundary {
+	private List<Produto> carrinho;
+	
+	public CarrinhoBoundary(List<Produto> carrinho) {
+		this.carrinho = carrinho;
+	}
+	
+	private TableView<Produto> table = new TableView<>();
 
-	public Scene render(Stage stg) throws Exception {
+	public Scene render() throws Exception {
 		GridPane gp = new GridPane();
-		HBox buttonsBox = new HBox();
-		Scene scn = new Scene(gp, 920, 400);
-		
+
+		Scene scn = new Scene(gp, 900, 400);
+        HBox buttonsBox = new HBox();
+        
+        TableColumn<Produto, String> nome = new TableColumn("Nome do produto");
+        nome.setMinWidth(100);
+        nome.setCellValueFactory(
+                new PropertyValueFactory<Produto, String>("Nome"));
+ 
+        TableColumn<Produto, String> descricao = new TableColumn("Descricao");
+        descricao.setMinWidth(100);
+        descricao.setCellValueFactory(
+                new PropertyValueFactory<Produto, String>("descricao"));
+ 
+        TableColumn<Produto, Double> valor = new TableColumn("Valor");
+        valor.setMinWidth(200);
+        valor.setCellValueFactory(
+            new PropertyValueFactory<Produto, Double>("valor")
+        );
+        
+        table.setItems(FXCollections.observableList(carrinho));
+        table.getColumns().addAll(nome, valor, descricao);
+        
+		gp.add(table, 0, 2, 7, 7);
 		//declarar labels e botão
 		
 		Button btnPagar = new Button("Realizar Pagamento"); //botao pagamento
 		
 		Label lblHotel = new Label ("           						HOTELARIA");
 		
-
+		Double total = 0.0;
 		
+		for(Produto produto: carrinho) {
+			total += produto.getValor();
+		}
+		
+		Label valorTotal = new Label(("Valor total: R$" + total + "0").replace('.', ','));
+
 		final ToggleGroup group = new ToggleGroup();
 
 		RadioButton rb1 = new RadioButton("Boleto");
@@ -41,9 +79,8 @@ public class CarrinhoBoundary {
 		RadioButton rb2 = new RadioButton("Cartao de crédito");
 		rb2.setToggleGroup(group);
 		
-
-		
 		gp.add(lblHotel, 1, 1);
+		gp.add(valorTotal, 0, 15);
 		
 		gp.add(rb1, 30, 18); //boleto
 		
@@ -59,35 +96,20 @@ public class CarrinhoBoundary {
         gp.getColumnConstraints().addAll(col1, col2);
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
-		
-	 	stg.setResizable(false);
-        stg.setScene(scn);
-        stg.setTitle("Carrinho Pagamento");
-        stg.show();
-        
         
         rb1.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
-            public void handle(MouseEvent event) {
-            	stg.setTitle("  Pagamento com boleto selecionado");
-            	
-            	
+            public void handle(MouseEvent event) {           	         	
         	Button btnImpboleto = new Button("imprimir boleto");
     	
         	gp.add(btnImpboleto, 30, 20);
-        	
-            	
-            } //aparecer mensagem sobre a função de pagamento escolhida
-        
+        	           	
+            } //aparecer mensagem sobre a função de pagamento escolhida        
 	});
-        
-        
-        
+      
         rb2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stg.setTitle("  Função crédito selecionada");
-            	
             	Label lblNumcard = new Label("Numero do cartão: ");
                 TextField txtNumcard = new TextField(); 
                 
@@ -96,33 +118,24 @@ public class CarrinhoBoundary {
                 
                 Label lblData = new Label("Data de validade: ");
                 TextField txtData = new TextField();
-                
-                
+                              
                 gp.add(lblNumcard, 0, 20); 
                 gp.add(lblCvv, 0, 21);
                 gp.add(lblData, 0, 22);
                 gp.add(txtNumcard, 1, 20);
                 gp.add(txtCvv, 1, 21);
                 gp.add(txtData, 1, 22);
-               
-            	
-            	
-            	
+                        	
             } //aparecer mensagem sobre a função de pagamento escolhida
         
 	});
-        
-        
-        
+         
         btnPagar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	stg.setTitle(" Pagamento realizado");
-            } //mensagem de pagamento realizado ao clicar
-           
-        
+            	
+            } //mensagem de pagamento realizado ao clicar 
 	});
 		return scn;
 	}
-
 }

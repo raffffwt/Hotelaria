@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 
 import control.QuartoControl;
 import control.ReservaControl;
+import entity.Produto;
+import entity.Quarto;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -13,17 +15,19 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import model.Quarto;
 
 public class ReservarBoundary {
 	Quarto currentQuarto = new Quarto();
+	private String dir = System.getProperty("user.dir");
 
 	public ReservarBoundary(int quartoId) {
 		QuartoControl quartoRepo = new QuartoControl();
@@ -33,13 +37,14 @@ public class ReservarBoundary {
 	
 	public Scene render(Stage stagePrincipal, Scene cenaPrincipal) throws FileNotFoundException {
 		GridPane gp = new GridPane();
+
+		Scene scn = new Scene(gp, 900, 400);
         HBox buttonsBox = new HBox();
-        Scene scn = new Scene(gp, 900, 400);
 
         Button btnReservar = new Button("Reservar");
         
         Label lblNome = new Label("Hotel");
-        Image image = new Image(new FileInputStream("C:\\Users\\DESKTOP\\Code\\Hotelaria\\src\\source\\carlospilotto3.jpg"));  
+        Image image = new Image(new FileInputStream(dir + "/resources/carlospilotto3.jpg"));  
         
         ImageView imageView = new ImageView(image); 
         

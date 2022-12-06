@@ -4,6 +4,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 import control.QuartoControl;
+import entity.Quarto;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -15,7 +16,6 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-import model.Quarto;
 
 public class QuartosDispoBoundary {
 	public List<Quarto> listaQuartos;
@@ -39,14 +39,12 @@ public class QuartosDispoBoundary {
         Label lblSuiteprc1 = new Label("Valor: R$" + listaQuartos.get(0).getValor().toString().replace('.', ',') + "0");
         Label lblOcupado1 = new Label("Ocupado: " + (listaQuartos.get(0).isReservado ? "Sim" : "Nao"));
        
-        
         Button btnCadastrar2 = new Button("Reservar");
         Label lblSuite2 = new Label(listaQuartos.get(1).getTipo());
         Label lblSuitedesc2 = new Label(listaQuartos.get(1).getDescricao());
         Label lblSuiteprc2 = new Label("Valor: R$" + listaQuartos.get(1).getValor().toString().replace('.', ',') + "0");
         Label lblOcupado2 = new Label("Ocupado: " + (listaQuartos.get(1).isReservado ? "Sim" : "Nao"));
-        
-        
+            
         Button btnCadastrar3 = new Button("Reservar");
         Label lblSuite3 = new Label(listaQuartos.get(2).getTipo());
         Label lblSuitedesc3 = new Label(listaQuartos.get(2).getDescricao());
@@ -59,8 +57,6 @@ public class QuartosDispoBoundary {
         Label lblSuitedesc4 = new Label(listaQuartos.get(3).descricao);
         Label lblSuiteprc4 = new Label("Valor: R$" + listaQuartos.get(3).getValor().toString().replace('.', ',') + "0");
         Label lblOcupado4 = new Label("Ocupado: " + (listaQuartos.get(3).isReservado ? "Sim" : "Nao"));
-
-        
 
 //COLOCANDO OS TEXTOS E BOTÕES NA TELA
         //LABELS E BOTÕES 

@@ -2,9 +2,8 @@ package boundary;
 
 
 import java.io.FileInputStream;
-
 import control.UsuarioControl;
-import javafx.application.Application;
+import entity.Usuario;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
@@ -18,10 +17,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import model.Usuario;
 
 
 public class PerfilBoundary {
+	private String dir = System.getProperty("user.dir");
 	
 	public Scene render(Usuario currentUser, Stage menuPrincipal, Scene cenaPrincipal, HomePageBoundary homePage) throws Exception {
         final GridPane gp = new GridPane();
@@ -45,7 +44,7 @@ public class PerfilBoundary {
         Label lblSenhaNova = new Label("Senha Nova: ");
     	TextField txtSenhaNova = new TextField();
                       
-        Image image = new Image(new FileInputStream("C:\\Users\\DESKTOP\\Code\\Hotelaria\\src\\source\\17004.png"));  
+        Image image = new Image(new FileInputStream(dir + "/resources/17004.png"));  
         
         ImageView imageView = new ImageView(image); 
         
