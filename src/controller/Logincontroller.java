@@ -19,7 +19,7 @@ public class Logincontroller extends Application {
         Scene scn = new Scene(gp, 600, 150);
 
         Button btnLogin = new Button("Fazer Login");
-        Button btnPesquisa = new Button("Não tem Login?");
+        Button btnPesquisa = new Button("Nï¿½o tem Login?");
 
         Label lblNome = new Label("Usuario: ");
         TextField txtNome = new TextField();
