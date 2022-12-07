@@ -9,6 +9,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -38,7 +39,7 @@ public class CadastroBoundary {
         TextField txtTel = new TextField();
         
         Label lblSenha = new Label("Senha: ");
-        TextField txtSenha = new TextField();
+        PasswordField txtSenha = new PasswordField();
 
         gp.add(lblNome, 0,1);
         gp.add(txtNome, 1,1);

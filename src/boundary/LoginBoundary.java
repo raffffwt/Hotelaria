@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -26,7 +27,7 @@ public class LoginBoundary {
         TextField txtNome = new TextField();
 
         Label lblSenha = new Label("Senha: ");
-        TextField txtSenha = new TextField();
+        PasswordField txtSenha = new PasswordField();
         
         Label lblAviso = new Label("Nome ou senha invalidos!");
         lblAviso.setVisible(false);

@@ -26,7 +26,7 @@ public class QuartosDispoBoundary {
         listaQuartos = quartoRepo.findAllQuartos();
 	}
 	
-	public Scene render(Stage stag) throws Exception {
+	public Scene render(Stage stag, Scene cenaPrincipal) throws Exception {
         GridPane gp = new GridPane();
         HBox buttonsBox = new HBox();
         Scene scn = new Scene(gp, 900, 400);
@@ -102,10 +102,8 @@ public class QuartosDispoBoundary {
             @Override
             public void handle(MouseEvent event) {
             	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(0).getId());
-            	lblOcupado1.setText("Ocupado: Sim");
-            	btnCadastrar.setDisable(true);
             	try {
-					stag.setScene(reservarController.render(stag, scn));
+					stag.setScene(reservarController.render(stag, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -116,10 +114,8 @@ public class QuartosDispoBoundary {
             @Override
             public void handle(MouseEvent event) {
             	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(1).getId());
-            	btnCadastrar2.setDisable(true);
-            	lblOcupado2.setText("Ocupado: Sim");
             	try {
-					stag.setScene(reservarController.render(stag, scn));
+					stag.setScene(reservarController.render(stag, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -130,10 +126,8 @@ public class QuartosDispoBoundary {
             @Override
             public void handle(MouseEvent event) {
             	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(2).getId());
-            	btnCadastrar3.setDisable(true);
-            	lblOcupado3.setText("Ocupado: Sim");
             	try {
-					stag.setScene(reservarController.render(stag, scn));
+					stag.setScene(reservarController.render(stag, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -144,10 +138,8 @@ public class QuartosDispoBoundary {
             @Override
             public void handle(MouseEvent event) {
             	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(3).getId());
-            	btnCadastrar4.setDisable(true);
-            	lblOcupado4.setText("Ocupado: Sim");
             	try {
-					stag.setScene(reservarController.render(stag, scn));
+					stag.setScene(reservarController.render(stag, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}

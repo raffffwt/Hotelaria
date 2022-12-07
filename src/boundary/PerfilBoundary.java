@@ -10,6 +10,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -40,11 +41,11 @@ public class PerfilBoundary {
         Label lblTel = new Label("Telefone: " + currentUser.getTelefone());
         
         Label lblSenha = new Label("Senha: ");
-        TextField txtSenha = new TextField();
+        PasswordField txtSenha = new PasswordField();
         Label lblSenhaNova = new Label("Senha Nova: ");
-    	TextField txtSenhaNova = new TextField();
+        PasswordField txtSenhaNova = new PasswordField();
                       
-        Image image = new Image(new FileInputStream(dir + "/resources/17004.png"));  
+        Image image = new Image(new FileInputStream(dir + "/resources/perfil/perfil.png"));  
         
         ImageView imageView = new ImageView(image); 
         

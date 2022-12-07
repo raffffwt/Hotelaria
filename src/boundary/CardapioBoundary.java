@@ -39,39 +39,39 @@ public class CardapioBoundary {
         Button btnProduto = new Button("Adicionar");
         Label lblSkol = new Label(listaProduto.get(0).getNome());
         Label lblSkoldesc = new Label(listaProduto.get(0).getDescricao());
-        Label lblSkolprc = new Label(listaProduto.get(0).getValor().toString());
+        Label lblSkolprc = new Label("R$" + listaProduto.get(0).getValor().toString().replace('.', ',') + "0");
        
         
         Button btnProduto2 = new Button("Adicionar");
         Label lblHei = new Label(listaProduto.get(1).getNome());
         Label lblHeidesc = new Label(listaProduto.get(1).getDescricao());
-        Label lblHeiprc = new Label(listaProduto.get(1).getValor().toString());
+        Label lblHeiprc = new Label("R$" + listaProduto.get(1).getValor().toString().replace('.', ',') + "0");
         
         
         Button btnProduto3 = new Button("Adicionar");
         Label lblCheet = new Label(listaProduto.get(2).getNome());
         Label lblCheetdesc = new Label(listaProduto.get(2).getDescricao());
-        Label lblCheetprc = new Label(listaProduto.get(2).getValor().toString());
+        Label lblCheetprc = new Label("R$" + listaProduto.get(2).getValor().toString().replace('.', ',') + "0");
         
         
         Button btnProduto4 = new Button("Adicionar");
         Label lblFandangos = new Label(listaProduto.get(3).nome);
         Label lblFandangosdesc = new Label(listaProduto.get(3).descricao);
-        Label lblFandangosprc = new Label(listaProduto.get(3).valor.toString());
+        Label lblFandangosprc = new Label("R$" + listaProduto.get(3).getValor().toString().replace('.', ',') + "0");
 
         
 
 //COLOCANDO OS TEXTOS E BOTÕES NA TELA
         //LABELS E BOTÕES SKOL
         gp.add(lblSkol, 2,1);
-        gp.add(lblSkolprc, 2,4);
-        gp.add(lblSkoldesc, 2,3);
+        gp.add(lblSkolprc, 2,3);
+        gp.add(lblSkoldesc, 2,4);
         gp.add(buttonsBox, 2, 6);
         
         //LABELS E BOTÕES HEINEKEIN
         gp.add(lblHei,  1,1);
-        gp.add(lblHeiprc,  1,4);
-        gp.add(lblHeidesc,  1,3);
+        gp.add(lblHeiprc,  1,3);
+        gp.add(lblHeidesc,  1,4);
         gp.add(btnProduto2, 1, 6);
         
         //LABELS E BOTÕES CHEETOS
@@ -129,6 +129,8 @@ public class CardapioBoundary {
             @Override
             public void handle(MouseEvent event) {
             	CarrinhoBoundary carrinhoBoundary = new CarrinhoBoundary(carrinho);
+            	if (carrinho.size() < 1)
+            		return;
             	try {
 					menuPrincipal.setScene(carrinhoBoundary.render());
 				} catch (Exception e) {

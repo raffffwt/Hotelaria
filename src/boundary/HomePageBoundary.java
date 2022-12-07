@@ -49,48 +49,46 @@ public class HomePageBoundary extends Application {
 		
 		Label lblAlmoco = new Label("Almoco opcional");			
 		
-		gp.add(btnCardapio, 4, 1);
-		gp.add(btnPerfil, 6, 1);
-		gp.add(btnHome, 2, 1);
+		gp.add(btnCardapio, 3, 1);
+		gp.add(btnPerfil, 5, 1);
+		gp.add(btnHome, 1, 1);
 		gp.add(lblHotel, 0, 0);
-		gp.add(btnQuartos, 8, 1);
-		gp.add(lblServi, 8, 8);
-		gp.add(lblWifi, 4 , 20);
-		gp.add(lblAr,12, 20);
-		gp.add(lblCafe, 4, 22);
-		gp.add(lblAlmoco, 12, 22);
+		gp.add(btnQuartos, 7, 1);
+		gp.add(lblServi, 5, 8);
+		gp.add(lblWifi, 3 , 20);
+		gp.add(lblAr, 7, 20);
+		gp.add(lblCafe, 3, 22);
+		gp.add(lblAlmoco, 7, 22);
 
-		Image image = new Image(new FileInputStream(new File(dir + "/resources/carlospilotto3.jpg")));  
+		Image image = new Image(new FileInputStream(new File(dir + "/resources/hotel/hotel.jpg")));  
         
         ImageView imageView = new ImageView(image); 
         
         imageView.setX(100); 
         imageView.setY(50); 
         
-        imageView.setFitHeight(600); 
+        imageView.setFitHeight(300); 
         imageView.setFitWidth(300); 
         
         imageView.setPreserveRatio(true);  
-        
-        Group root = new Group(imageView);  
             
-        gp.add(root, 25, 50);
+        gp.add(imageView, 7, 25);
 
- 		Image image2 = new Image(new FileInputStream(new File(dir + "/resources/carlospilotto3.jpg")));  
+ 		Image image2 = new Image(new FileInputStream(new File(dir + "/resources/hotel/hotel2.jpg")));  
         
         ImageView imageView2 = new ImageView(image2); 
         
         imageView2.setX(100); 
         imageView2.setY(50); 
         
-        imageView2.setFitHeight(600); 
+        imageView2.setFitHeight(300); 
         imageView2.setFitWidth(300); 
         
-        imageView.setPreserveRatio(true);  
+        imageView2.setPreserveRatio(true);  
         
-        Group root2 = new Group(imageView);  
+        Group root2 = new Group(imageView2);  
    
-        gp.add(root2, 10, 30);	
+        gp.add(root2, 3, 25);	
         
         btnCardapio.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -109,7 +107,7 @@ public class HomePageBoundary extends Application {
             public void handle(MouseEvent event) {
             	QuartosDispoBoundary quartos = new QuartosDispoBoundary();
             	try {
-					stg.setScene(quartos.render(stg));
+					stg.setScene(quartos.render(stg, scn));
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

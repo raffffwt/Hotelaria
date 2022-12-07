@@ -44,15 +44,15 @@ public class ReservarBoundary {
         Button btnReservar = new Button("Reservar");
         
         Label lblNome = new Label("Hotel");
-        Image image = new Image(new FileInputStream(dir + "/resources/carlospilotto3.jpg"));  
+        Image image = new Image(new FileInputStream(dir + "/resources/quartos/quarto" + currentQuarto.getId() + ".jpg"));  
         
         ImageView imageView = new ImageView(image); 
         
         imageView.setX(50); 
         imageView.setY(25); 
         
-        imageView.setFitHeight(300); 
-        imageView.setFitWidth(150); 
+        imageView.setFitHeight(375); 
+        imageView.setFitWidth(225); 
         
         imageView.setPreserveRatio(true);  
 

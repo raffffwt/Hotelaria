@@ -97,34 +97,62 @@ public class CarrinhoBoundary {
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
         
+        Label lblNumcard = new Label("Numero do cartão: ");
+        TextField txtNumcard = new TextField(); 
+        
+        Label lblCvv = new Label("Código de segurança: ");
+        TextField txtCvv = new TextField();
+        
+        Label lblData = new Label("Data de validade: ");
+        TextField txtData = new TextField();
+                      
+        gp.add(lblNumcard, 0, 20); 
+        gp.add(lblCvv, 0, 21);
+        gp.add(lblData, 0, 22);
+        gp.add(txtNumcard, 1, 20);
+        gp.add(txtCvv, 1, 21);
+        gp.add(txtData, 1, 22);
+        
+        lblNumcard.setVisible(false);
+    	lblCvv.setVisible(false);
+    	lblData.setVisible(false);
+    	txtNumcard.setVisible(false);
+    	txtCvv.setVisible(false);
+    	txtData.setVisible(false);
+    	
+    	Button btnImpboleto = new Button("imprimir boleto");
+    	
+    	gp.add(btnImpboleto, 30, 20);
+    	
+    	btnImpboleto.setVisible(false);
+        
         rb1.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
-            public void handle(MouseEvent event) {           	         	
-        	Button btnImpboleto = new Button("imprimir boleto");
-    	
-        	gp.add(btnImpboleto, 30, 20);
-        	           	
+            public void handle(MouseEvent event) {    
+            	// deixa os campos de cartao invisiveis
+            	lblNumcard.setVisible(false);
+            	lblCvv.setVisible(false);
+            	lblData.setVisible(false);
+            	txtNumcard.setVisible(false);
+            	txtCvv.setVisible(false);
+            	txtData.setVisible(false);
+            	
+            	btnImpboleto.setVisible(true);// deixa o botao visivel
             } //aparecer mensagem sobre a função de pagamento escolhida        
 	});
       
         rb2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	Label lblNumcard = new Label("Numero do cartão: ");
-                TextField txtNumcard = new TextField(); 
-                
-                Label lblCvv = new Label("Código de segurança: ");
-                TextField txtCvv = new TextField();
-                
-                Label lblData = new Label("Data de validade: ");
-                TextField txtData = new TextField();
-                              
-                gp.add(lblNumcard, 0, 20); 
-                gp.add(lblCvv, 0, 21);
-                gp.add(lblData, 0, 22);
-                gp.add(txtNumcard, 1, 20);
-                gp.add(txtCvv, 1, 21);
-                gp.add(txtData, 1, 22);
+            	btnImpboleto.setVisible(false); // deixa o botao invisivel
+            	
+            	// deixa os campos de cartao visiveis
+            	lblNumcard.setVisible(true);
+            	lblCvv.setVisible(true);
+            	lblData.setVisible(true);
+            	txtNumcard.setVisible(true);
+            	txtCvv.setVisible(true);
+            	txtData.setVisible(true);
                         	
             } //aparecer mensagem sobre a função de pagamento escolhida
         
