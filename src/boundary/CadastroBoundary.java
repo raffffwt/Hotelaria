@@ -73,9 +73,7 @@ public class CadastroBoundary {
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
-            	menuPrincipal.close();
             	menuPrincipal.setScene(cenaPrincipal);
-            	menuPrincipal.show();
             }
         });
 		return scn;

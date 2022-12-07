@@ -101,9 +101,9 @@ public class QuartosDispoBoundary {
         btnCadastrar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(0).getId());
+            	ReservarBoundary reservarBoundary = new ReservarBoundary(listaQuartos.get(0).getId());
             	try {
-					stag.setScene(reservarController.render(stag, cenaPrincipal));
+					stag.setScene(reservarBoundary.render(stag, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -113,9 +113,9 @@ public class QuartosDispoBoundary {
         btnCadastrar2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(1).getId());
+            	ReservarBoundary reservarBoundary = new ReservarBoundary(listaQuartos.get(1).getId());
             	try {
-					stag.setScene(reservarController.render(stag, cenaPrincipal));
+					stag.setScene(reservarBoundary.render(stag, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -125,9 +125,9 @@ public class QuartosDispoBoundary {
         btnCadastrar3.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(2).getId());
+            	ReservarBoundary reservarBoundary = new ReservarBoundary(listaQuartos.get(2).getId());
             	try {
-					stag.setScene(reservarController.render(stag, cenaPrincipal));
+					stag.setScene(reservarBoundary.render(stag, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
@@ -137,9 +137,9 @@ public class QuartosDispoBoundary {
         btnCadastrar4.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-            	ReservarBoundary reservarController = new ReservarBoundary(listaQuartos.get(3).getId());
+            	ReservarBoundary reservarBoundary = new ReservarBoundary(listaQuartos.get(3).getId());
             	try {
-					stag.setScene(reservarController.render(stag, cenaPrincipal));
+					stag.setScene(reservarBoundary.render(stag, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}

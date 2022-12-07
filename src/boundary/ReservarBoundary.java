@@ -90,10 +90,7 @@ public class ReservarBoundary {
             public void handle(MouseEvent event) {
             	ReservaControl reserva = new ReservaControl();
             	reserva.ReservarQuarto(currentQuarto.getId());
-            	stagePrincipal.close();
             	stagePrincipal.setScene(cenaPrincipal);
-            	
-            	stagePrincipal.show();
             }
         });
         
