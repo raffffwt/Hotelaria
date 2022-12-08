@@ -20,9 +20,9 @@ import javafx.stage.Stage;
 public class CadastroBoundary {
 
 	public Scene render(Stage menuPrincipal, Scene cenaPrincipal) throws Exception {
-        GridPane gp = new GridPane();
-        HBox buttonsBox = new HBox();
-        Scene scn = new Scene(gp, 800, 300);
+        GridPane gp = new GridPane(); // Instanciando o gridPane
+        HBox buttonsBox = new HBox(); // Caixa horizontal para os botoes
+        Scene scn = new Scene(gp, 800, 300); //  Criando a cena
 
         Button btnLogin = new Button("Cadastrar");
         
@@ -41,6 +41,7 @@ public class CadastroBoundary {
         Label lblSenha = new Label("Senha: ");
         PasswordField txtSenha = new PasswordField();
 
+      // Colocando os elementos na tela seguindo as colunas do GridPane
         gp.add(lblNome, 0,1);
         gp.add(txtNome, 1,1);
         gp.add(lblEmail, 0,2);
@@ -55,27 +56,33 @@ public class CadastroBoundary {
 
         buttonsBox.getChildren().addAll(btnLogin);
 
+        // Setando quanto de espaço cada coluna vai ocupar na tela
         ColumnConstraints col1 = new ColumnConstraints();
         ColumnConstraints col2 = new ColumnConstraints();
         col1.setPercentWidth(15);
         col2.setPercentWidth(50);
-
         gp.getColumnConstraints().addAll(col1, col2);
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
         
+        // EventHandler para quando o usuario clicar no botao de login
         btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
+            	// Instancia da classe Control, onde esta a chamada do banco de dados
             	CadastroControl cadastroController = new CadastroControl();
             	try {
+            		// Fazendo a chamada do banco de dados
 					cadastroController.CadastraUsuario(txtNome.getText() , txtEmail.getText(), txtEndereco.getText(), txtSenha.getText(), txtTel.getText());
 				} catch (SQLException e) {
 					e.printStackTrace();
 				}
+            	// Setando a cena como a cena de login
             	menuPrincipal.setScene(cenaPrincipal);
             }
         });
+        
+        // Retornando a cena para uso na tela de login
 		return scn;
         
     }
