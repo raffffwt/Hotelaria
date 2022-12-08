@@ -49,6 +49,7 @@ public class LoginBoundary {
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
         
+        // Botao para logar no sistema
         btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -67,6 +68,7 @@ public class LoginBoundary {
             }
         });
         
+        // Botao pra acessar o cadastro
         btnCadastro.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

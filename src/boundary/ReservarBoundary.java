@@ -35,11 +35,12 @@ public class ReservarBoundary {
 		currentQuarto = quartoRepo.findQuartoById(quartoId);
 	}
 	
-	public Scene render(Stage stagePrincipal, Scene cenaPrincipal) throws FileNotFoundException {
+	public Scene render(Stage menuPrincipal, Scene cenaPrincipal) throws FileNotFoundException {
 		GridPane gp = new GridPane();
 
-		Scene scn = new Scene(gp, 900, 400);
+		Scene scn = new Scene(gp, 900, 450);
         HBox buttonsBox = new HBox();
+        Button btnVoltar = new Button("Voltar");
 
         Button btnReservar = new Button("Reservar");
         
@@ -73,6 +74,8 @@ public class ReservarBoundary {
         Label lblValor = new Label("Valor: R$" + currentQuarto.getValor().toString().replace('.', ',') + "0");
         gp.add(lblValor, 1,8);
         gp.add(buttonsBox, 0, 11);
+        
+        gp.add(btnVoltar, 12, 0);
        
         buttonsBox.getChildren().addAll(btnReservar);
 
@@ -85,13 +88,26 @@ public class ReservarBoundary {
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
         
+        // BOTAO PARA RESERVAR O QUARTO
         btnReservar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
             	ReservaControl reserva = new ReservaControl();
             	reserva.ReservarQuarto(currentQuarto.getId());
-            	stagePrincipal.setScene(cenaPrincipal);
+            	menuPrincipal.setScene(cenaPrincipal);
             }
+        });
+        
+        // BOTAO PRA VOLTAR AO MENU PRINCIPAL
+        btnVoltar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+	        public void handle(MouseEvent event) {
+	        	QuartosDispoBoundary quartos = new QuartosDispoBoundary();
+        		try {
+					menuPrincipal.setScene(quartos.render(menuPrincipal, cenaPrincipal));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+	        }	   
         });
         
 		return scn;

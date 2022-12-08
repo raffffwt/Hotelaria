@@ -49,6 +49,7 @@ public class HomePageBoundary extends Application {
 		
 		Label lblAlmoco = new Label("Almoco opcional");			
 		
+		// colocando os botoes na tela
 		gp.add(btnCardapio, 3, 1);
 		gp.add(btnPerfil, 5, 1);
 		gp.add(btnHome, 1, 1);
@@ -90,6 +91,7 @@ public class HomePageBoundary extends Application {
    
         gp.add(root2, 3, 25);	
         
+        // Botao pra acessar o cardapio
         btnCardapio.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -102,6 +104,7 @@ public class HomePageBoundary extends Application {
             }
         });
         
+        // Botao pra acessar os quartos disponiveis
         btnQuartos.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -113,7 +116,8 @@ public class HomePageBoundary extends Application {
 				}
             }
         });
-        
+
+        // Botao pra acessar o perfil do usuario
         btnPerfil.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {

@@ -31,7 +31,8 @@ public class CardapioBoundary {
 	public Scene render(Stage menuPrincipal, Scene cenaPrincipal) throws Exception {
         GridPane gp = new GridPane();
         HBox buttonsBox = new HBox();
-        Scene scn = new Scene(gp, 900, 400);
+        Scene scn = new Scene(gp, 900, 450);
+        Button btnVoltar = new Button("Voltar");
        
  //DECLARAÇÃO DAS LABELS E BOTÕES                                            
         Button btnFinalizar = new Button("Finalizar Compra");
@@ -88,19 +89,20 @@ public class CardapioBoundary {
         
                        
         gp.add(btnFinalizar, 6, 20);
+        gp.add(btnVoltar, 12, 0);
 
         buttonsBox.getChildren().addAll(btnProduto);
 
-        
+        // SETANDO TAMANHO QUE AS CAIXAS DE TEXTO VAO OCUPAR NA TELA
         ColumnConstraints col1 = new ColumnConstraints();
         ColumnConstraints col2 = new ColumnConstraints();
         col1.setPercentWidth(15);
         col2.setPercentWidth(50);
-
         gp.getColumnConstraints().addAll(col1, col2);
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
         
+        // BOTOES PARA ADICIONAR PRODUTOS NO CARRINHO
         btnProduto.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -125,6 +127,8 @@ public class CardapioBoundary {
             	carrinho.add(listaProduto.get(3));
             }
         });
+        
+        // BOTAO RENDERIZAR A TELA DE FINALIZACAO DE COMPRA
         btnFinalizar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
@@ -137,6 +141,13 @@ public class CardapioBoundary {
 					e.printStackTrace();
 				}
             }
+        });
+        
+        // BOTAO PRA VOLTAR AO MENU PRINCIPAL
+        btnVoltar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+	        public void handle(MouseEvent event) {
+        		menuPrincipal.setScene(cenaPrincipal);
+	        }	   
         });
 		return scn;
     }

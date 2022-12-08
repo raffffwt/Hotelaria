@@ -11,7 +11,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -27,10 +26,11 @@ public class PerfilBoundary {
         final GridPane gp = new GridPane();
         Scene scn = new Scene(gp, 900, 600);
 
-        Button btnLogin = new Button("Aplicar");
+        Button btnAplicar = new Button("Aplicar");
         
         Button btnRedefinir = new Button("Redefinir Senha");
         Button btnExcluirConta = new Button("Excluir conta");
+        Button btnVoltar = new Button("Voltar");
         
         Label lblNome = new Label("Nome: " + currentUser.getNome());
 
@@ -75,8 +75,9 @@ public class PerfilBoundary {
                
         gp.add(btnRedefinir, 1, 7);
         
-        gp.add(btnLogin, 0, 12);
+        gp.add(btnAplicar, 0, 12);
         gp.add(btnExcluirConta, 12, 12);
+        gp.add(btnVoltar, 12, 0);
 
 
         ColumnConstraints col1 = new ColumnConstraints();
@@ -88,6 +89,7 @@ public class PerfilBoundary {
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
         
+        // BOTAO PRA REDEFINIR A SENHA
         btnRedefinir.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 	        public void handle(MouseEvent event) {
 	        	if(txtSenha.getText().equals(currentUser.getSenha())) {
@@ -100,25 +102,41 @@ public class PerfilBoundary {
 	        }	   
         });
         
-        btnLogin.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        // BOTAO PRA CONFIRMAR A NOVA SENHA
+        btnAplicar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 	        public void handle(MouseEvent event) {
 	        	if (!btnRedefinir.isVisible()) {
 	        		UsuarioControl userControl = new UsuarioControl();
 	        		userControl.AlterarSenha(currentUser.getId(), txtSenhaNova.getText());
 	        		homePage.currentUser =  userControl.findUsuarioById(currentUser.getId());
 	        		
-	        		menuPrincipal.close();
 	        		menuPrincipal.setScene(cenaPrincipal);
-	        		menuPrincipal.show();
 	        	}
 	        }	   
         });
         
+        // BOTAO PARA VOLTAR A TELA PRINCIPAL
+        btnVoltar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+	        public void handle(MouseEvent event) {
+        		menuPrincipal.setScene(cenaPrincipal);
+	        }	   
+        });
+        
+        // BOTAO PARA EXCLUIR A CONTA
         btnExcluirConta.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 	        public void handle(MouseEvent event) {
 	        	UsuarioControl userControl = new UsuarioControl();
 	        	
 	        	userControl.ExcluirUsuario(currentUser.getId());
+	        	
+	        	LoginBoundary login = new LoginBoundary();
+	        	
+	        	try {
+					menuPrincipal.setScene(login.render(menuPrincipal, cenaPrincipal, homePage));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 	        }	   
         });
         

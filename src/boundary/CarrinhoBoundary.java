@@ -33,7 +33,7 @@ public class CarrinhoBoundary {
 	public Scene render() throws Exception {
 		GridPane gp = new GridPane();
 
-		Scene scn = new Scene(gp, 900, 400);
+		Scene scn = new Scene(gp, 900, 450);
         HBox buttonsBox = new HBox();
         
         TableColumn<Produto, String> nome = new TableColumn("Nome do produto");
@@ -60,7 +60,7 @@ public class CarrinhoBoundary {
 		
 		Button btnPagar = new Button("Realizar Pagamento"); //botao pagamento
 		
-		Label lblHotel = new Label ("           						HOTELARIA");
+		Label lblHotel = new Label ("HOTELARIA");
 		
 		Double total = 0.0;
 		

@@ -19,40 +19,44 @@ import javafx.stage.Stage;
 
 public class QuartosDispoBoundary {
 	public List<Quarto> listaQuartos;
+    QuartoControl quartoRepo = new QuartoControl();
 	
 	public QuartosDispoBoundary() {
-        QuartoControl quartoRepo = new QuartoControl();
         
         listaQuartos = quartoRepo.findAllQuartos();
 	}
 	
-	public Scene render(Stage stag, Scene cenaPrincipal) throws Exception {
+	public Scene render(Stage menuPrincipal, Scene cenaPrincipal) throws Exception {
         GridPane gp = new GridPane();
         HBox buttonsBox = new HBox();
         Scene scn = new Scene(gp, 900, 400);
+        
+        Button btnVoltar = new Button("Voltar");
+        
+        listaQuartos = quartoRepo.findAllQuartos();
        
  //DECLARAÇÃO DAS LABELS E BOTÕES                                                  
         
-        Button btnCadastrar = new Button("Reservar");
+        Button btnReservar = new Button("Reservar");
         Label lblSuite1 = new Label(listaQuartos.get(0).getTipo());
         Label lblSuitedesc1 = new Label(listaQuartos.get(0).getDescricao());
         Label lblSuiteprc1 = new Label("Valor: R$" + listaQuartos.get(0).getValor().toString().replace('.', ',') + "0");
         Label lblOcupado1 = new Label("Ocupado: " + (listaQuartos.get(0).isReservado ? "Sim" : "Nao"));
        
-        Button btnCadastrar2 = new Button("Reservar");
+        Button btnReservar2 = new Button("Reservar");
         Label lblSuite2 = new Label(listaQuartos.get(1).getTipo());
         Label lblSuitedesc2 = new Label(listaQuartos.get(1).getDescricao());
         Label lblSuiteprc2 = new Label("Valor: R$" + listaQuartos.get(1).getValor().toString().replace('.', ',') + "0");
         Label lblOcupado2 = new Label("Ocupado: " + (listaQuartos.get(1).isReservado ? "Sim" : "Nao"));
             
-        Button btnCadastrar3 = new Button("Reservar");
+        Button btnReservar3 = new Button("Reservar");
         Label lblSuite3 = new Label(listaQuartos.get(2).getTipo());
         Label lblSuitedesc3 = new Label(listaQuartos.get(2).getDescricao());
         Label lblSuiteprc3 = new Label("Valor: R$" + listaQuartos.get(2).getValor().toString().replace('.', ',') + "0");
         Label lblOcupado3 = new Label("Ocupado: " + (listaQuartos.get(2).isReservado ? "Sim" : "Nao"));
         
         
-        Button btnCadastrar4 = new Button("Reservar");
+        Button btnReservar4 = new Button("Reservar");
         Label lblSuite4 = new Label(listaQuartos.get(3).getTipo());
         Label lblSuitedesc4 = new Label(listaQuartos.get(3).descricao);
         Label lblSuiteprc4 = new Label("Valor: R$" + listaQuartos.get(3).getValor().toString().replace('.', ',') + "0");
@@ -71,23 +75,25 @@ public class QuartosDispoBoundary {
         gp.add(lblSuitedesc2,  1,3);
         gp.add(lblSuiteprc2,  1,4);
         gp.add(lblOcupado2, 1,5);
-        gp.add(btnCadastrar2, 1, 6);
+        gp.add(btnReservar2, 1, 6);
         
         //LABELS E BOTÕES 
         gp.add(lblSuite3, 1,11);
         gp.add(lblSuitedesc3, 1,13);
         gp.add(lblSuiteprc3, 1,14);
         gp.add(lblOcupado3, 1,15);
-        gp.add(btnCadastrar3,  1, 16);
+        gp.add(btnReservar3,  1, 16);
         
         //LABELS E BOTÕES 
         gp.add(lblSuite4, 2,11);
         gp.add(lblSuitedesc4, 2,13);                   
         gp.add(lblSuiteprc4, 2,14);
         gp.add(lblOcupado4, 2,15);
-        gp.add(btnCadastrar4, 2, 16);
+        gp.add(btnReservar4, 2, 16);
+        
+        gp.add(btnVoltar, 12, 0);
 
-        buttonsBox.getChildren().addAll(btnCadastrar);
+        buttonsBox.getChildren().addAll(btnReservar);
 
         ColumnConstraints col1 = new ColumnConstraints();
         ColumnConstraints col2 = new ColumnConstraints();
@@ -98,58 +104,70 @@ public class QuartosDispoBoundary {
         gp.setVgap(10);
         gp.setPadding(new Insets(15));
         
-        btnCadastrar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        // BOTAO PRA RESERVAR O QUARTO 1
+        btnReservar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
             	ReservarBoundary reservarBoundary = new ReservarBoundary(listaQuartos.get(0).getId());
             	try {
-					stag.setScene(reservarBoundary.render(stag, cenaPrincipal));
+            		menuPrincipal.setScene(reservarBoundary.render(menuPrincipal, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
             }
         });
         
-        btnCadastrar2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        // BOTAO PRA RESERVAR O QUARTO 2
+        btnReservar2.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
             	ReservarBoundary reservarBoundary = new ReservarBoundary(listaQuartos.get(1).getId());
             	try {
-					stag.setScene(reservarBoundary.render(stag, cenaPrincipal));
+            		menuPrincipal.setScene(reservarBoundary.render(menuPrincipal, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
             }
         });
         
-        btnCadastrar3.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        // BOTAO PRA RESERVAR O QUARTO 3
+        btnReservar3.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
             	ReservarBoundary reservarBoundary = new ReservarBoundary(listaQuartos.get(2).getId());
             	try {
-					stag.setScene(reservarBoundary.render(stag, cenaPrincipal));
+            		menuPrincipal.setScene(reservarBoundary.render(menuPrincipal, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
             }
         });
         
-        btnCadastrar4.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+        // BOTAO PRA RESERVAR O QUARTO 4
+        btnReservar4.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
             	ReservarBoundary reservarBoundary = new ReservarBoundary(listaQuartos.get(3).getId());
             	try {
-					stag.setScene(reservarBoundary.render(stag, cenaPrincipal));
+            		menuPrincipal.setScene(reservarBoundary.render(menuPrincipal, cenaPrincipal));
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
             }
         });
         
-        btnCadastrar.setDisable(listaQuartos.get(0).isReservado);
-        btnCadastrar2.setDisable(listaQuartos.get(1).isReservado);
-        btnCadastrar3.setDisable(listaQuartos.get(2).isReservado);
-        btnCadastrar4.setDisable(listaQuartos.get(3).isReservado);
+     // BOTAO PRA VOLTAR AO MENU INICIAL
+        btnVoltar.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+	        public void handle(MouseEvent event) {
+	        	menuPrincipal.setScene(cenaPrincipal);
+	        }	   
+        });
+        
+        btnReservar.setDisable(listaQuartos.get(0).isReservado);
+        btnReservar2.setDisable(listaQuartos.get(1).isReservado);
+        btnReservar3.setDisable(listaQuartos.get(2).isReservado);
+        btnReservar4.setDisable(listaQuartos.get(3).isReservado);
+        
 		return scn;        
     }
 }
